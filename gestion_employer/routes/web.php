@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeController;
-
+use App\Http\Controllers\TacheController;
+use App\Http\Employe;
+// use App\Http\Controllers\EmployeMiddlewareController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +29,18 @@ Route::controller(EmployeController::class)->group(function () {
     Route::patch('/employe/{employe}', 'update');
     Route::delete('/employe/{employe}', 'destroy');
 });
+Route::controller(TacheController::class)->group(function () {
+    Route::get('/tache', 'index');
+    Route::get('/tache/create', 'create');
+    Route::get('/tache/{id}', 'show');
+    Route::get('/tache/{id}/edit', 'edit');
+    Route::post('/tache', 'store');
+    Route::patch('/tache/{id}', 'update');
+    Route::delete('/tache/{id}', 'destroy');
+    });
+    
+// Route::get('/employe', 'index')->middleware('testEmployeM');
+// Route::get('/INDEX', 'index')->middleware('testEmployeM');
+// Route::get('/index',[EmployeMiddlewareController::class,'index'])->middleware('testEmployeM');
 
 
